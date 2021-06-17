@@ -29,19 +29,19 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(600, 200);
-  mario = createSprite(50,180,20,50);
+  createCanvas(windowWidth,windowHeight);
+  mario = createSprite(50,540,20,50);
   mario.addAnimation("running", mario_running);
   mario.scale = 0.5;
   
-  ground = createSprite(0,190,1200,10);
+  ground = createSprite(0,580,1500,10);
   ground.x = ground.width /2;
   ground.velocityX = -(6 + 3*score/100);
   
-  gameOver = createSprite(300,100);
+  gameOver = createSprite(350,250);
   gameOver.addImage(gameOverImg);
   
-  restart = createSprite(300,140);
+  restart = createSprite(350,300);
   restart.addImage(restartImg);
   
   gameOver.scale = 0.5;
@@ -72,7 +72,7 @@ function draw() {
       ground.velocityX = -(6 + 3*score/100);
     }
   
-    if(keyDown("space") && mario.y >= 139) {
+    if(keyDown("space") && mario.y >= 540) {
       mario.velocityY = -12;
     }
   
@@ -127,8 +127,8 @@ function draw() {
 function spawnCoin() {
   //write code here to spawn the clouds
   if (frameCount % 60 === 0) {
-    var coin = createSprite(600,120,40,10);
-    coin.y = Math.round(random(80,120));
+    var coin = createSprite(600,580,40,10);
+    coin.y = Math.round(random(500,400));
     coin.addImage(coinImage);
     coin.scale = 0.1;
     coin.velocityX = -3;
@@ -148,7 +148,7 @@ function spawnCoin() {
 
 function spawnObstacles() {
   if(frameCount % 60 === 0) {
-    var obstacle = createSprite(600,165,10,40);    
+    var obstacle = createSprite(600,560,10,40);    
     //generate random obstacles
     var rand = Math.round(random(1,3));
     switch(rand) {
